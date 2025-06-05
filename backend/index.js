@@ -11,7 +11,7 @@ app.use(express.json());
 app.post('/login', (req, res) => {
     const { username, password } = req.body
 
-    console.log('Datos recibidos:', req.body);
+    console.log('Datos:', req.body);
 
     console.log(`Usuario: ${username}, Contraseña: ${password}`);
 
