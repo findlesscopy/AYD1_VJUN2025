@@ -10,6 +10,9 @@ app.use(express.json());
 
 app.post('/login', (req, res) => {
     const { username, password } = req.body
+
+    console.log('Datos recibidos:', req.body);
+    
     res.json({
         message: 'Datos recibidos de manera exitosa',
         user: username,
