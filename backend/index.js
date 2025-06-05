@@ -12,7 +12,9 @@ app.post('/login', (req, res) => {
     const { username, password } = req.body
 
     console.log('Datos recibidos:', req.body);
-    
+
+    console.log(`Usuario: ${username}, Contraseña: ${password}`);
+
     res.json({
         message: 'Datos recibidos de manera exitosa',
         user: username,
