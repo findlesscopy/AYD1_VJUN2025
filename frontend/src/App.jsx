@@ -21,8 +21,8 @@ function App() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-bg-100">
-      <div className="max-w-md w-full p-10 rounded-md">
+    <div className="flex items-center justify-center min-h-screen bg-gray-300">
+      <div className="max-w-md w-full p-10 rounded-md bg-gray-500">
         <h1 className="text-md font-bold text-center">Login (Inicio de sesión)</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="correo" className="text-text-100">Usuario:</label>
@@ -41,6 +41,15 @@ function App() {
             name="password"
             placeholder="Escribe tu contraseña"
             {...register('password', { required: true })}
+          />
+
+          <label htmlFor="password" className="text-text-100">Edad:</label>
+          <input
+            className="w-full px-4 py-2 rounded-md mb-4"
+            type="edad"
+            name="edad"
+            placeholder="Escribe tu edad"
+            {...register('edad', { required: true })}
           />
           <div className="flex items-center justify-center">
             <button
