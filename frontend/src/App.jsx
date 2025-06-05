@@ -27,7 +27,7 @@ function App() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="correo" className="text-text-100">Usuario:</label>
           <input
-            className="w-full px-4 py-2 rounded-md mb-4"
+            className="w-full px-4 py-2 rounded-md mb-4 bg-gray-300"
             type="text"
             name="correo"
             placeholder="Correo"
@@ -36,7 +36,7 @@ function App() {
 
           <label htmlFor="password" className="text-text-100">Contraseña:</label>
           <input
-            className="w-full px-4 py-2 rounded-md mb-4"
+            className="w-full px-4 py-2 rounded-md mb-4 bg-gray-300"
             type="password"
             name="password"
             placeholder="Escribe tu contraseña"
@@ -45,12 +45,22 @@ function App() {
 
           <label htmlFor="password" className="text-text-100">Edad:</label>
           <input
-            className="w-full px-4 py-2 rounded-md mb-4"
+            className="w-full px-4 py-2 rounded-md mb-4 bg-gray-300"
             type="edad"
             name="edad"
             placeholder="Escribe tu edad"
             {...register('edad', { required: true })}
           />
+
+          <label htmlFor="password" className="text-text-100">Ciudad:</label>
+          <input
+            className="w-full px-4 py-2 rounded-md mb-4 bg-gray-300"
+            type="ciudad"
+            name="ciudad"
+            placeholder="Escribe tu ciudad"
+            {...register('ciudad', { required: true })}
+          />
+
           <div className="flex items-center justify-center">
             <button
               className="px-4 py-1 rounded-md my-1 w-full font-semibold"
