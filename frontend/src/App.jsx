@@ -21,7 +21,7 @@ function App() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-bg-100">
+    <div className="flex items-center justify-center min-h-screen bg-fuchsia-500">
       <div className="max-w-md w-full p-10 rounded-md">
         <h1 className="text-md font-bold text-center">Login (Inicio de sesión)</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
