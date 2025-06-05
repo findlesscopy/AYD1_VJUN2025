@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-bg-100">
       <div className="max-w-md w-full p-10 rounded-md">
-        <h1 className="text-md font-bold text-center">Login</h1>
+        <h1 className="text-md font-bold text-center">Login (Inicio de sesión)</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="correo" className="text-text-100">Usuario:</label>
           <input
