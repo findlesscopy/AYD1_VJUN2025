@@ -27,6 +27,7 @@ function App() {
                         className="w-full bg-gray-700 text-gray-100 px-4 py-2 rounded-md"
                         type="text"
                         placeholder="Nombre Completo"
+                        data-cy="inputNombreCompleto"
                       />
                     </div>
 
@@ -36,6 +37,7 @@ function App() {
                         className="w-full bg-gray-700 text-gray-100 px-4 py-2 rounded-md"
                         type="text"
                         placeholder="Teléfono"
+                        data-cy="inputTelefono"
                       />
                     </div>
 
@@ -48,6 +50,7 @@ function App() {
                         type="number"
                         id="inputEdad"
                         placeholder="Edad"
+                        data-cy="inputEdad"
                       />
                     </div>
 
@@ -57,6 +60,7 @@ function App() {
                         className="w-full bg-gray-700 text-gray-100 px-4 py-2 rounded-md"
                         type="text"
                         placeholder="DPI"
+                        data-cy="inputDPI"
                       />
                     </div>
 
@@ -66,12 +70,13 @@ function App() {
                         className="w-full bg-gray-700 text-gray-100 px-4 py-2 rounded-md"
                         type="email"
                         placeholder="Correo Electrónico"
+                        data-cy="inputCorreoElectronico"
                       />
                     </div>
 
                     <div className="col-span-2">
                       <label>Género*</label>
-                      <select className="w-full bg-gray-700 text-gray-100 px-4 py-2 rounded-md">
+                      <select className="w-full bg-gray-700 text-gray-100 px-4 py-2 rounded-md " data-cy="selectGenero">
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
                         <option value="Otro">Otro</option>
@@ -84,6 +89,7 @@ function App() {
                         className="w-full bg-gray-700 text-gray-100 px-4 py-2 rounded-md"
                         type="text"
                         placeholder="Dirección"
+                        data-cy="inputDireccion"
                       />
                     </div>
 
@@ -94,6 +100,7 @@ function App() {
                           className="file:bg-blue-600 file:text-white file:px-4 file:py-1 file:hover:bg-blue-700 file:rounded-md file:my-1 file:w-full file:font-semibold w-full bg-gray-700 text-gray-100"
                           type="file"
                           id="inputCV"
+                          data-cy="inputCV"
                         />
                       </div>
                     </div>
@@ -101,8 +108,8 @@ function App() {
                     <div className="col-span-6">
                       <button
                         className="bg-blue-600 px-4 py-2 hover:bg-blue-700 rounded-md my-1 w-full text-white font-semibold"
+                        data-cy="btnRegistrar"
                         onclick={onclick}
-                        id="btnRegistrar"
                       >
                         Registrarse
                       </button>
