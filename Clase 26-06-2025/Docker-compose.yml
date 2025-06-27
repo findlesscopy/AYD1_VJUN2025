@@ -1,0 +1,28 @@
+services:
+  backend:
+    image: findlesscopy/ejemplo-ayd1-cicd-backend:latest
+    container_name: backend
+    ports:
+      - "3001:3001"
+    environment:
+      DB_HOST: 34.56.214.36
+      DB_USER: root
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: EjemploAYD1
+      DB_PORT: 3306
+    networks:
+      - ayd1_network
+  frontend:
+    image: findlesscopy/ejemplo-ayd1-cicd-frontend:latest
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    environment:
+      VITE_BACKEND_URL: http://34.136.230.52:3001
+    networks:
+      - ayd1_network
+    depends_on:
+      - backend
+networks:
+  ayd1_network:
+      driver: bridge

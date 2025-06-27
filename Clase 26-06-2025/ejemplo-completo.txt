@@ -1,0 +1,71 @@
+# -----------------DEFINICIÓN DE STAGES--------------------
+stages:
+  - build
+  - test
+  - deploy
+
+# -----------------BUILD--------------------
+build:example:
+  stage: build
+  script:
+    - echo "---------------INICIO DE COMPILACIÓN DE CAPA MEDIA--------------------"
+      # Verifica si hay contenedores en ejecución antes de detenerlos
+    - if [ "$(docker ps -q)" ]; then docker stop $(docker ps -aq); fi
+      # Elimina todos los contenedores y volúmenes no utilizados para liberar espacio
+    - docker system prune -a -f
+      # Inicia sesión en DockerHub de forma segura
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+      # Construye la imagen
+    - docker build -t "$DOCKER_USER/ayd1-cicd" ./backend
+      # Publica la imagen en DockerHub
+    - docker push "$DOCKER_USER/ayd1-cicd"
+
+    - echo "---------------FINAL DE COMPILACIÓN DE CAPA MEDIA--------------------"
+  tags:
+    - prueba-cicd
+  only:
+    refs:
+      - main
+
+# -----------------TEST--------------------
+test:example:
+  stage: test
+  needs: ["build:example"]
+  script:
+    - echo "---------------INICIO DE TEST--------------------"
+    - curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+    - sudo apt-get install -y nodejs
+    - node -v
+    - npm -v
+    - cd ./backend
+    - npm install
+    - npm test
+    - echo "---------------FINAL DE TEST--------------------"
+  tags:
+    - prueba-cicd
+  only:
+    refs:
+      - main
+
+# -----------------DEPLOY--------------------
+deploy:deploy_app:
+  stage: deploy
+  needs: ["test:example"]
+  script:
+    - echo "---------------INICIO DE DEPLOY--------------------"
+    # Inicia sesión en DockerHub
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+    # Limpia contenedores detenidos
+    - docker container prune -f
+    # Descarga la imagen desde DockerHub
+    - docker pull "$DOCKER_USER/ayd1-cicd:latest"
+    # Detiene y elimina el contenedor existente si ya está corriendo
+    - if [ "$(docker ps -aq -f name=^ayd1-cicd$)" ]; then docker stop ayd1-cicd && docker rm ayd1-cicd; fi
+    # Ejecuta el contenedor basado en la imagen descargada
+    - docker run -d --name ayd1-cicd --restart unless-stopped -p 3000:3000 -e DB_HOST=34.56.214.36 -e DB_USER=root -e DB_PASSWORD=$DB_PASSWORD -e DB_DATABASE=EjemploAYD1 -e DB_PORT=3306 findlesscopy/ayd1-cicd:latest
+    - echo "---------------FINAL DE DEPLOY--------------------"
+  tags:
+    - prueba-cicd
+  only:
+    refs:
+      - main

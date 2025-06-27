@@ -18,27 +18,12 @@ public class Main {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         try{
-            driver.get("http://localhost:5174");
+            driver.get("http://localhost:3000");
             Thread.sleep(5000);
 
             driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div/div/div[2]/input")).sendKeys("José Ibarra");
 
-            driver.findElement(By.cssSelector("#root > div > div > div > div:nth-child(2) > form > div > div > div:nth-child(3) > input")).sendKeys("12345678");
-
-            driver.findElement(By.id("inputEdad")).sendKeys("24");
-
-            driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div/div/div[5]/input")).sendKeys("1234567891234");
-
-            driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div/div/div[6]/input")).sendKeys("1234567891234");
-
-            WebElement selectGenero = driver.findElement(By.tagName("select"));
-            selectGenero.sendKeys("Femenino");
-
-            driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div/div/div[8]/input")).sendKeys("Direción falsa 123");
-            WebElement fileInput = driver.findElement(By.id("inputCV"));
-            fileInput.sendKeys("C:\\Users\\findl\\Downloads\\CVPrueba.pdf");
-
-            WebElement botonEnviar = driver.findElement(By.id("btnRegistrar"));
+            WebElement botonEnviar = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/div[2]/form/div/div/div[9]/button"));
             botonEnviar.click();
 
             Thread.sleep(5000);

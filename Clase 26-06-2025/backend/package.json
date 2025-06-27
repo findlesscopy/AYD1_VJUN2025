@@ -1,0 +1,22 @@
+{
+  "name": "clase-10-6-2025",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jest": "^30.0.0",
+    "mysql2": "^3.14.1",
+    "supertest": "^7.1.1",
+    "nodemon": "^2.0.22"
+  }
+}

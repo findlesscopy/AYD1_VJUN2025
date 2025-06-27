@@ -1,8 +1,8 @@
 describe('pruebas de registro', () => {
   it('passes', () => {
-    cy.visit('http://localhost:5173/')
+    cy.visit('http://localhost:3000/')
 
-    cy.get('[data-cy=inputNombreCompleto').type('testuser')
+    cy.get('[data-cy=inputNombre').type('testuser')
     cy.get('[data-cy=inputTelefono').type('1234567890')
     cy.get('[data-cy=inputEdad').type('30')
     cy.get('[data-cy=inputDPI').type('1234567890123')
@@ -13,11 +13,11 @@ describe('pruebas de registro', () => {
   })
 
   it('funciona la url', () => {
-    cy.visit('http://localhost:5173/')
+    cy.visit('http://localhost:3000/')
   })
 
   it('funciona el botón de registro', () => {
-    cy.visit('http://localhost:5173/')
+    cy.visit('http://localhost:3000/')
     cy.get('[data-cy=btnRegistrar]').click()
   })
 })
